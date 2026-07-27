@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patients</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <h1 class="text-primary">👤 Patients Management</h1>
+
+    <br>
+
+    <a href="/add_patient" class="btn btn-success">
+        Add Patient
+    </a>
+
+    <a href="/" class="btn btn-secondary">
+        Dashboard
+    </a>
+
+    <br><br>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Blood Group</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for patient in patients %}
+            <tr>
+                <td>{{ patient[0] }}</td>
+                <td>{{ patient[1] }}</td>
+                <td>{{ patient[2] }}</td>
+                <td>{{ patient[3] }}</td>
+                <td>{{ patient[4] }}</td>
+                <td>{{ patient[5] }}</td>
+                <td>{{ patient[6] }}</td>
+
+                <td>
+                    <a href="/edit_patient/{{ patient[0] }}"
+                       class="btn btn-warning btn-sm">
+                       Edit
+                    </a>
+
+                    <a href="/delete_patient/{{ patient[0] }}"
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Delete this patient?')">
+                       Delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
